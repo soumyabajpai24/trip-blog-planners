@@ -1,0 +1,12 @@
+{% extends 'myapp/master1.html' %}
+{% block title %}POST{% endblock %}
+{% block main %}
+    <br>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="post">
+    </form>
+{% endblock %}

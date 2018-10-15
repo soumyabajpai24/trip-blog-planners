@@ -1,0 +1,86 @@
+{% extends 'myapp/master.html' %}
+{% load static %}
+{% block title %}Trip.com{% endblock %}
+{% block main %}
+    <div class="container-fluid">
+ <div data-ride="car" class="carousel slide" id="carousel">
+<ul class="carousel-indicators">
+ <li data-slide-to="0" class="active" data-target="#carousel"></li>
+ <li data-slide-to="1" data-target="#carousel"></li>
+ <li data-slide-to="2" data-target="#carousel"></li>
+</ul>
+<div class="carousel-inner">
+<div class="active carousel-item">
+ <img alt="Slide1" src="{% static 'myapp/images/manali2.jpg' %}">
+ <div class="carousel-caption">
+ <h2>BLOG</h2>
+ </div>
+</div>
+<div class="carousel-item">
+ <img alt="Slide2" src="{% static 'myapp/images/manali1.jpg' %}">
+ <div class="carousel-caption">
+ <h2 style="color: black">PACKAGES</h2>
+ </div>
+</div>
+<div class="carousel-item">
+ <img alt="Slide3" src="{% static 'myapp/images/manali4.jpg' %}">
+ <div class="carousel-caption">
+ <h2>COMMUTE</h2>
+ </div>
+</div>
+</div>
+<a href="#carousel" class="carousel-control-prev" data-slide="prev">
+ <
+</a>
+<a href="#carousel" class="carousel-control-next" data-slide="next">
+ >
+</a>
+</div>
+ </div>
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'myapp/images/diary.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Travel SLAM Book</h2>
+            <p style="font-size: larger">Make a collections of trip's .Store Unlimited photos and memories .just a click away</p>
+            <p><a class="btn btn-secondary" href="{% url 'myapp:userhome' %}" role="button" style="background-color:#47a447 ">Signup&raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'myapp/images/package.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Packages</h2>
+            <p style="font-size: larger">Book a package with wide variety of exotic destinations.if a wonder-lust then a click away</p>
+            <p><a class="btn btn-secondary" href="{% url 'myapp:packdisplay' %}" role="button" style="background-color:#47a447 ">View Packages &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'myapp/images/plan.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Planners</h2>
+            <p style="font-size: larger">Wide variety of options to choose.plan a customize trip on various exotic locations </p>
+            <p><a class="btn btn-secondary" href="{% url 'myapp:search' %}" role="button" style="background-color: #47a447">Plan &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+          {% for t in trips %}
+        <hr class="featurette-divider">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">{{ t.slug }}</h2>
+            <p class="lead">{{ t.discription }}</p>
+            <p>Duration:{{ t.duration }} Days </p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="{{ t.image.url }}" alt="Generic placeholder image" width="400" height="300">
+          </div>
+        </div>
+
+      {% endfor %}
+       <hr class="featurette-divider">
+      </div><!-- /.container -->
+{% endblock %}

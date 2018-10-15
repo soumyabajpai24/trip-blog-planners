@@ -1,0 +1,24 @@
+{% extends 'myapp/agentmaster.html' %}
+{% block title %}{% endblock %}
+{% block main %}
+    <br>
+    <br>
+    <br>
+    <div class="container marketing">
+    {% for t in trip %}
+        <hr class="featurette-divider">
+        <div class="row featurette">
+        <div class="col-md-7">
+        <img class="featurette-image img-fluid mx-auto" src="{{ t.image.url }}" alt="Generic placeholder image" width="400" height="300">
+        <h2 class="featurette-heading">{{ t.slug }}</h2>
+        <p class="lead">{{ t.discription }}</p>
+        <p>Duration:{{ t.price }} Rupees </p>
+        <p>
+<a class="btn btn-primary btn-sm" href="{% url 'myapp:deletepack' t.id %}" role="button">Remove</a>
+<a class="btn btn-primary btn-sm" href="{% url 'myapp:updatepack' t.id %}" role="button">Update</a>
+        </p>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}>
